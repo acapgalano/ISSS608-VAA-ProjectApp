@@ -42,9 +42,9 @@
 .small-box{
   background-color: var(--secondary_red);
   display: inline-block;
-  color: var(--primary_red);
+  color: var(--primary_blue);
   padding: 10px 10px 20px 10px;
-  border: solid 2px var(--primary_red);
+  border: solid 3px var(--primary_blue);
   margin-right: 10px;
   border-radius: 35px;
   
@@ -65,5 +65,13 @@ a#overview_tabs{
 th{
   background: var(--primary_blue);
   color: #FFFFFF;
+}
+
+#benchmark-benchmark_header{
+  font-size: 25px;
+  font-size: 2vw;
+  font-weight: bold;
+  color: var(--primary_blue);
+  margin-bottom: 15px;
 }
  

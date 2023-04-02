@@ -93,8 +93,8 @@ benchmarkTab <- function(id){
 
              hr(style = "border-top: 3px solid #fed9b7;"),
               
-             fluidRow(
-               textOutput('benchmark_header')
+             fluidRow(align = "center",
+                textOutput(ns('benchmark_header')) 
              ),
              # FOR TYPE
              fluidRow(
@@ -546,15 +546,13 @@ benchmarkServer <- function(id, input, output, session) {
                     color = 'teal')
                 })
                    
+                output$benchmark_header <- renderText({ 
+                  paste("Benchmarks for: ", input$benchmark_title) 
+                })
                    
                 # end of observe event    
                 })
-      
-             
-                 
-                 output$benchmark_header <- renderText({ 
-                   input$benchmark_title 
-                 })
+  
                }
   )
 }
