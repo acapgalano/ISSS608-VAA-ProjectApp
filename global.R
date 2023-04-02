@@ -45,7 +45,7 @@ merge_steam <- merge(steamspy,
 
 AAA_list <- AAA_dev$Developer
 
-top_publish_table <- subset(merge_steam, select = c('appid', 'name.x', 'developer', 'publisher', 'Agg_Score', 'average_forever', 'median_forever', 'price', 'genre', 'website', 'metacritic_score', 'recommendations', 'achievements', 'short_description', 'release_date' ))
+top_publish_table <- subset(merge_steam, select = c('appid', 'name.x', 'developer', 'publisher', 'Agg_Score', 'average_forever', 'median_forever', 'price', 'genre', 'website', 'short_description', 'release_date' ))
 
 top_publish_table <- top_publish_table[top_publish_table$developer %in% AAA_list,] 
 

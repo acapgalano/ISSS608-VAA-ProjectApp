@@ -10,74 +10,87 @@ benchmarkTab <- function(id){
            value = "benchmark",
            fluidPage(
              # Enter game infortmation 
-             fluidRow(
-               column(4,
-                 align = 'center',
-                 textInput(ns('benchmark_title'),
-                           "What's your game's name?")
+             div(style = 'background-color: #fed9b7; padding: 15px;',
+              fluidRow(
+                align = 'center',
+                style = 'padding: 0 10px 0 10px;',
+                h2('Welcome to the Game Benchmark Calculator!',
+                   style = 'color: #f07167; align: center;'),
+                p("You can input the details of the game you wish to develop and we'll generate benchmark
+                  values based on games that have similar characteristics to yours!")
+              ),
+               fluidRow(
+                 column(4,
+                   align = 'center',
+                   textInput(ns('benchmark_title'),
+                             "What's your game's name?")
+                 ),
+                 column(4,
+                        align = 'center',
+                        selectInput(ns('benchmark_type'),
+                                    "Type", 
+                                    type_list,
+                                    multiple = TRUE),
+                 ),
+                 column(4,
+                        align = 'center',
+                        selectInput(ns('benchmark_genre'),
+                                    "Game genre/s", 
+                                    genre_list,
+                                    multiple = TRUE),
+                 )
                ),
-               column(4,
-                      align = 'center',
-                      selectInput(ns('benchmark_type'),
-                                  "Type", 
-                                  type_list,
-                                  multiple = TRUE),
+               fluidRow(
+                 column(2,
+                        align = 'center',
+                        radioButtons(ns('benchmark_multiplayer'),
+                                     "Is it Multiplayer?",
+                                     choices = c("Yes" = "Yes",
+                                                 "No" = "No"),
+                                     inline = TRUE),
+                 ),
+                 column(3,
+                        align = 'center',
+                        radioButtons(ns('benchmark_perspective'), 
+                                     "First person or Third person?",
+                                     choiceNames = list("First-person",
+                                                        "Third-person"),
+                                     choiceValues = list("First-Person",
+                                                         "Third-Person"),
+                                     inline = TRUE)
+                   
+                 ),
+                 column(2,
+                        align = 'center',
+                        radioButtons(ns('benchmark_ftp'),
+                                     "Is it Free To Play?",
+                                     choices = c("Yes" = "Yes",
+                                                 "No" = "No"),
+                                     inline = TRUE),
+                 ),
+                 column(5,
+                        align = 'center',
+                        sliderInput(ns('benchmark_price'),
+                                    "Possible price range:",
+                                    value = c(0,499),
+                                    min = 0, 
+                                    max = 4999)
+                 )
                ),
-               column(4,
-                      align = 'center',
-                      selectInput(ns('benchmark_genre'),
-                                  "Game genre/s", 
-                                  genre_list,
-                                  multiple = TRUE),
-               )
-             ),
-             fluidRow(
-               column(2,
-                      align = 'center',
-                      radioButtons(ns('benchmark_multiplayer'),
-                                   "Is it Multiplayer?",
-                                   choices = c("Yes" = "Yes",
-                                               "No" = "No"),
-                                   inline = TRUE),
-               ),
-               column(2,
-                      align = 'center',
-                      radioButtons(ns('benchmark_perspective'), 
-                                   "First person or Third person?",
-                                   choiceNames = list("First-person",
-                                                      "Third-person"),
-                                   choiceValues = list("First-Person",
-                                                       "Third-Person"),
-                                   inline = TRUE)
+               fluidRow(
+                 column(12, style = 'display: grid;',
+                        actionButton(ns('benchmark_run'),
+                                     " See Benchmarks",
+                                     align = 'center',
+                                     style = 'background-color: #f07167; color: #fdfcdc; padding:20px; font-size:120%',
+                                     icon = icon('bullseye')
+                                     )
+                        )
                  
-               ),
-               column(2,
-                      align = 'center',
-                      radioButtons(ns('benchmark_ftp'),
-                                   "Is it Free To Play?",
-                                   choices = c("Yes" = "Yes",
-                                               "No" = "No"),
-                                   inline = TRUE),
-               ),
-               column(6,
-                      align = 'center',
-                      sliderInput(ns('benchmark_price'),
-                                  "Possible price range:",
-                                  value = c(0,499),
-                                  min = 0, 
-                                  max = 4999)
                )
              ),
              # Generate benchmark graphs 
-             fluidRow(
-               column(4),
-               column(4,
-                      actionButton(ns('benchmark_run'),
-                                   "See benchmarks",
-                                   class = 'btn-primary')),
-               column(4)
-               
-             ),
+
              hr(style = "border-top: 3px solid #fed9b7;"),
               
              fluidRow(
