@@ -1,0 +1,54 @@
+:root {
+  --primary_blue: #0081a7; 
+  --secondary_blue: #00afb9 ; 
+  --primary_red: #f07167; 
+  --secondary_red: #fed9b7;
+  --yellow: #fdfcdc; 
+}
+
+.jumbotron{
+  background-image: url('img/home_jumbotron_edit.png');
+  background-size: cover;
+  background-color: var(--primary_blue);
+}
+
+.jumbotron-heading{
+  color: var(--yellow);
+}
+
+.navbar{
+  background-color: var(--primary_red);
+}
+
+.navbar-default .navbar-nav>.active>a{
+  background-color: var(--secondary_red);
+  color: var(--primary_red);
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+  color: var(--yellow);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #F2F3F5;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+  background-color: var(--secondary_red);
+  color: var(--primary_red);
+}
+
+
+.small-box{
+  background-color: var(--secondary_red);
+}
+
+#overview_tabs{
+  background-color: #FFFFFF;
+}
+
+table{
+    table-layout:fixed;
+    width:100%;
+}
+ 
