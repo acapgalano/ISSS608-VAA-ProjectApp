@@ -20,19 +20,11 @@ pacman::p_load(
                lubridate,
                tidytext,
                rlist, 
-               plotly,
-               gganimate, 
-               ggthemes, 
-               gifski, 
-               gapminder, 
-               reshape2, 
-               pracma, 
+               plotly, 
                ggstatsplot, 
                bslib,
-               ggiraph,
                ggpubr,
-               ggvis,
-               cowplot)
+               ggvis)
 
 ############################## PATHS TO DATA #################################
 

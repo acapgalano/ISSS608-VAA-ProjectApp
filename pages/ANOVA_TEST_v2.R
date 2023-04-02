@@ -57,7 +57,7 @@ ui <- dashboardPage(
                                     will put an impact on the popularity, user activity and price; on 
                                     the other hand, as an investor, you may want to explore the revenue 
                                     and user activity of games from a developer, before you make a decision.",
-                                             sep = "\n"),
+                                            sep = "\n"),
                                       width = 20)),
                    p(""),
             tabsetPanel(
@@ -117,7 +117,7 @@ ui <- dashboardPage(
                                         "Revenue",
                                         "Active"
                                       )),
-                         actionButton("run2","Run!",icon = icon("cocktail"),class = "btn-primary")
+                         actionButton("run2","Run!",icon = icon('play'),class = "btn-primary")
                        )
                      )
                      )

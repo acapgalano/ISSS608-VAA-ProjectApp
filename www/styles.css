@@ -41,6 +41,13 @@
 
 .small-box{
   background-color: var(--secondary_red);
+  display: inline-block;
+  color: var(--primary_red);
+  padding: 10px 10px 20px 10px;
+  border: solid 2px var(--primary_red);
+  margin-right: 10px;
+  border-radius: 35px;
+  
 }
 
 #overview_tabs{
@@ -49,6 +56,10 @@
 
 a#overview_tabs{
   color: var(--primary_red) ;
+}
+
+#comparison_tabset{
+  background-color:#FFFFFF;
 }
 
 th{
