@@ -13,11 +13,11 @@ overviewTab <- function(id){
                   id = "overview_tabs",
                   # First Tab
                         tabPanel("Top Games",
-                                 style = "background-color: #ffffff; padding: 5px;",
+                                style = "background-color: #ffffff;",
                                 value = 'overview_topgames_tab', 
                                 icon = icon('gamepad'),
                                 fluidRow(style = 'padding: 10px 5px 5px 30px;',
-                                  h2("Top Games"),
+                                  h2("Looking at the Best of the Best", style = 'color: #0081a7;'),
                                   p("In this tab, you can take a look at the top N games by rating or popularity. Make sure to hover to find out more about the games.")
                                 ),
                                 fluidRow(style = 'padding: 10px 15px 10px 30px;',
@@ -54,52 +54,86 @@ overviewTab <- function(id){
                                           )
                                   ),
                                   hr(style = "border-top: 10px solid #fdfcdc;"),
-                                  fluidRow(column(12,
-                                           div(style = "overflow-y: auto; height: 300px",
+          
+                                  fluidRow(style = 'padding: 10px;',
+                                           #div(style = 'padding-left: 20px;',
+                                          #     h2("Table of Game Data")),
+                                           column(12,
+                                           div(style = "overflow-y: auto; height: 500px;",
                                                dataTableOutput(ns('overview_topgames_table')))
                                     )
                                   )
                         ),
                         # For Developers 
                         tabPanel("AAA Developers",
+                                 style = "background-color: #ffffff;",
                                  value = 'overview_a3devs_tab', 
                                  icon = icon('star'),
                                  fluidRow(
-                                   sidebarLayout(sidebarPanel(sliderInput(ns('overview_a3devs_year'),
-                                                                          "Select a range of year:",
-                                                                          value = c(year(as.Date("1997-01-01", "%Y-%m-%d")),year(as.Date("2018-01-01", "%Y-%m-%d"))),
-                                                                          min = year(as.Date("1997-01-01", "%Y-%m-%d")), 
-                                                                          max = year(as.Date("2018-01-01", "%Y-%m-%d"))),
-                                                              radioButtons(ns('overview_a3devs_sortby'),"Sort by:",
-                                                                           choiceNames = list("Rating",
-                                                                                              "Popularity"),
-                                                                           choiceValues = list("Rating",
-                                                                                               "Popularity")),
-                                                        
-                                                        
+                                   style = 'padding: 10px 5px 5px 30px;',
+                                   h2("The Kings of the Video Game Industry",
+                                      style = 'color: #0081a7;'),
+                                   p("Triple A developers are big companies with lots of manpower who are well established in the video game industry. They create the most popular and highest quality (/supposedly/) games.")
+                                 ),
+                                 fluidRow(
+                                   sidebarLayout(sidebarPanel(style = 'margin-left:35px;',
+                                                        div(style = 'padding: 5px;',
+                                                        sliderInput(ns('overview_a3devs_year'),
+                                                                    "Select a range of year:",
+                                                                    value = c(year(as.Date("1997-01-01", "%Y-%m-%d")),year(as.Date("2018-01-01", "%Y-%m-%d"))),
+                                                                    min = year(as.Date("1997-01-01", "%Y-%m-%d")), 
+                                                                    max = year(as.Date("2018-01-01", "%Y-%m-%d")),
+                                                                    sep = ""),
+                                                        radioButtons(ns('overview_a3devs_sortby'),"Sort by:",
+                                                                     choiceNames = list("Rating",
+                                                                                        "Popularity"),
+                                                                     choiceValues = list("Rating",
+                                                                                         "Popularity"))
+                                                        )
                                    ),
                                      mainPanel(
-                                       div(style = 'padding:5px 5px 5px 5px;',
+                                       div(style = 'padding:5px 5px 5px 5px; margin-right: 20px;',
                                          plotlyOutput(ns('overview_a3devs_plot')),
                                          useShinyjs()
                                        )
                                      )
                                    )
                                  ),
+                                 hr(style = "border-top: 10px solid #fdfcdc;"),
+                                 
+                                 #fluidRow(style = 'padding: 10px;',
+                                          #div(style = 'padding-left: 20px;',
+                                          #     h2("Table of Game Data")),
+                                  #        column(12,
+                                  #               div(style = "overflow-y: auto; height: 500px;",
+                                  #                   dataTableOutput(ns('overview_a3devs_table')))
+                                  #        )
+                                 #)
+                                 # AAA Devs Info
                                  fluidRow(
-                                   column(1, p("")),
-                                   column(10,
-                                          dataTableOutput(ns('overview_a3devs_table'))
-                                   ),
-                                   column(1, p(""))
+                                   column(1),
+                                   column(2),
+                                   column(2),
+                                   column(2),
+                                   column(2),
+                                   column(2),
+                                   column(1)
                                  )
                         ),
                  # For Indie Developers
                  tabPanel("Indie Developers",
+                          style = "background-color: #ffffff;",
                           value = 'overview_indie_tab', 
                           icon = icon('snowflake'),
                           fluidRow(
+                            style = 'padding: 10px 5px 5px 30px;',
+                            h2("Appreciating Hidden Gems",
+                               style = 'color: #0081a7;'),
+                            p("Passion goes a long way. You don't need a team of 100 people or the best tools to create a masterpiece. These games, despite their humble beginnings, found their way into our hard drives and our hearts.")
+                          ),
+                          fluidRow(
                             sidebarLayout(sidebarPanel(
+                              style = 'margin-left: 30px;',
                               sliderInput(ns('overview_indie_topn'),
                                           "Select top N games:",
                                           value = 5, 
@@ -107,15 +141,18 @@ overviewTab <- function(id){
                                           max = max(30), 
                                           step = 5),
                               
-                              radioButtons(ns('overview_indie_sortby'),"Sort by:",
-                                           choiceNames = list("Rating",
-                                                              "Popularity"),
-                                           choiceValues = list("Rating",
-                                                               "Popularity"))
+                              #radioButtons(ns('overview_indie_sortby'),"Sort by:",
+                              #             choiceNames = list("Rating",
+                              #                                "Popularity"),
+                              #             choiceValues = list("Rating",
+                              #                                 "Popularity"))
                               ),
                               mainPanel(
-                                plotlyOutput(ns('overview_indie_plot')),
-                                useShinyjs()
+                                div(
+                                  style = 'margin-right: 20px; padding-right: 10px',
+                                  plotlyOutput(ns('overview_indie_plot')),
+                                  useShinyjs()
+                                )
                               )
                             )
                           ),
@@ -169,8 +206,10 @@ overviewServer <- function(id, input, output, session){
                              y = ~average_forever, 
                              type = 'bar',
                              name = 'Average Player Count',
-                             hovertemplate = paste('<b>Game Name</b>: %{x}', 
-                                                   '<br><b>Average Player Count</b>: %{y}'),
+                             template = 'ggplot2',
+                             hovertemplate = ~paste('<b>Game Name</b>: %{x}', 
+                                                   '<br><b>Average Player Count</b>: %{y}',
+                                                   '<br><b>Description</b>: ', gsub('(.{1,45})(\\s|$)', '\\1\n', short_description)),
                              marker = list(color = '#00afb9',
                                            line = list(color = '#0081a7',
                                                        width = 3))) %>%
@@ -182,19 +221,24 @@ overviewServer <- function(id, input, output, session){
                                                                       FALSE
                                                                   }}),
                                     yaxis = list(title = 'Number of Players'),
-                                    title =  paste("Top ", input$overview_topgames_topn, " Games by Popularity"), 
+                                    title = list(text = paste("Top ", input$overview_topgames_topn, " Games by Popularity"),
+                                                 font = list(size = 20)), 
                                     margin = list(l = 50, r = 50, b = 50, t = 50, pad = 4),
                                     hoverlabel = list(bgcolor = '#0081a7', 
-                                                      font = list(size = 12)))
+                                                      font = list(size = 12)),
+                                    paper_bgcolor = '#00afb9')
                    }else{
                      plot_ly(data = top_games(), 
                              x = ~reorder(name.x, -Agg_Score), 
                              y = ~Agg_Score, 
                              type = 'scatter',
                              name = 'Average Positive Rating',
-                             hovertemplate = paste('<b>Game Name</b>: %{x}', 
-                                                   '<br><b>Average Positive Rating</b>: %{y}',
-                                                   '<br><b>Average Player Count</b>: %{marker.size}'),
+                             template = 'ggplot2',
+                             hovertemplate = ~paste('<b>Game Name</b>: %{x}', 
+                                                   '<br><b>Average Positive Rating</b>:', percent(Agg_Score),
+                                                   '<br><b>Average Player Count</b>: %{marker.size}',
+                                                   '<br><b>Description</b>: ', 
+                                                   gsub('(.{1,45})(\\s|$)', '\\1\n', short_description)),
                              marker = list(size = ~average_forever, 
                                            sizemode = 'area',
                                            sizeref = 10,
@@ -212,11 +256,13 @@ overviewServer <- function(id, input, output, session){
                                              FALSE
                                            }}),
                               yaxis = list(title = 'Average Positive Rating'),
-                              title =  paste("Top ", input$overview_topgames_topn, " Games by Rating"), 
-                              margin = list(l = 50, r = 50, b = 50, t = 50, pad = 4),
+                              title = list (text = paste("Top ", input$overview_topgames_topn, " Games by Rating"),
+                                            font = list(size = 20)), 
+                              margin = list(l = 50, r = 50, b = 50, t = 50, pad = 5),
                               hoverlabel = list(bgcolor = '#f07167', 
                                                 font = list(size = 14,
-                                                            color = '#fed9b7')))
+                                                            color = '#fed9b7')),
+                              paper_bgcolor = '#fed9b7')
                    }
                    
                  })
@@ -245,7 +291,14 @@ overviewServer <- function(id, input, output, session){
                                                                                  'Website' = website,
                                                                                  'Release Date' = release_date)%>% 
                                                                           mutate('Release Date' = format(`Release Date`, "%m-%d-%Y"))
-                                                                   }, rownames = FALSE)
+                                                                   }, rownames = FALSE,
+                                                                   options = list(scrollX = TRUE,
+                                                                                  scroller = TRUE,
+                                                                                  autoWidth = TRUE, 
+                                                                                  pageLength = 30, 
+                                                                                  lengthChange = FALSE,
+                                                                                  dom = 't')
+                 )
                  
                 
                  
@@ -279,34 +332,42 @@ overviewServer <- function(id, input, output, session){
                  
                  output$overview_a3devs_plot <- renderPlotly({
                    if(input$overview_a3devs_sortby != 'Rating'){
-                     g <- ggplot(top_publish_users(), aes(x = developer, y = Sum_User, fill = factor(year), tooltip = paste("Developer = ", developer, "<br>", "Sum_User = ", Sum_User, "<br>", "Year = ", year))) + 
-                       geom_bar(stat = "identity") +
-                       scale_color_viridis_d() +
-                       labs(x = "Developer", 
-                            y = "Number of User",
-                            title = "Top Steam Developers") +
-                       theme(legend.position = "top") +
-                       theme_bw() +
-                       theme(axis.text.x = element_blank(),
-                             axis.ticks.x = element_blank())
-                     
-                     ggplotly(g)
+                     plot_ly(top_publish_users(), x = ~developer, y = ~Sum_User, color = ~factor(year), colors = 'Spectral',
+                             hovertemplate = ~paste("Game Developer: ", developer, "<br>Average Player Count: ", Sum_User, "<br>Year: ", year),
+                             type = "bar") %>%
+                       layout(xaxis = list(title = "Game Developer"),
+                              yaxis = list(title = "Average Positive Rating"),
+                              title = "Average Popularity of Games by AAA Steam Developers",
+                              legend = list(title = "Year"),
+                              hovermode = "closest",
+                              showlegend = TRUE,
+                              barmode = "stack",
+                              margin = list(l = 40, r = 20, t = 50, b = 30),
+                              plot_bgcolor = '#dcf8fa',
+                              paper_bgcolor = '#00afb9',
+                              font = list(color = '#ffffff'))
                    } else {
-                     g <- ggplot(top_publish_rating(), aes(x = developer, y = Ave_Score, fill = factor(year), tooltip = paste("Developer = ", developer, "<br>", "New User = ", Ave_Score, "<br>", "Year = ", year))) + 
-                       geom_bar(stat = "identity") +
-                       scale_color_viridis_d() +
-                       labs(x = "Developer", 
-                            y = "Average Rating",
-                            title = "Top Steam Developers") +
-                       theme(legend.position = "top") +
-                       theme_bw() +
-                       theme(axis.text.x = element_blank(),
-                             axis.ticks.x = element_blank())
-                     
-                     ggplotly(g)
+                       plot_ly(top_publish_rating(), x = ~developer, y = ~Ave_Score, color = ~factor(year), colors = 'Spectral',
+                                 hovertemplate = ~paste("Game Developer: ", developer, "<br> Average Positive Rating: ", percent(Ave_Score), "<br>Year: ", year),
+                                 type = "bar") %>%
+                       layout(xaxis = list(title = "Game Developer"),
+                              yaxis = list(title = "Average Player Count"),
+                              title = "Average Rating of Games by AAA Steam Developers",
+                              legend = list(title = "Year"),
+                              hovermode = "closest",
+                              showlegend = TRUE,
+                              barmode = "stack",
+                              margin = list(l = 40, r = 20, t = 50, b = 30),
+                              plot_bgcolor = '#fcf1e6',
+                              paper_bgcolor = '#fed9b7')
                    }
                    
                  })
+                 
+                 
+                 
+                 
+                 
                  # Generate Dataframe of Top N Indie Games
                  
                  top_indie_games <- reactive({
@@ -322,26 +383,41 @@ overviewServer <- function(id, input, output, session){
                    plot_ly(data = top_indie_games(), 
                            x = ~reorder(name.x, -average_forever), 
                            y = ~average_forever, type = 'bar', 
-                           marker = list(color = '#006000', 
-                                         line = list(color = 'white', width = 0.5)),
-                           name = 'Average Users') %>% 
+                           marker = list(color = '#00afb9', 
+                                         line = list(color = 'white', width = 0.5),
+                                         hovertemplate = ~paste('<b>Game Name</b>:', name.x, 
+                                                                '<br><b>Average Positive Rating</b>:', percent(Agg_Score),
+                                                                '<br><b>Average Player Count</b>:', average_forever,
+                                                                '<br><b>Description</b>: ', 
+                                                                gsub('(.{1,45})(\\s|$)', '\\1\n', short_description))),
+                           name = 'Average Player Count') %>% 
                            add_trace(x = ~reorder(name.x, -average_forever), 
                                      y = ~Agg_Score, 
                                      type = 'scatter', 
                                      mode = 'lines', 
-                                     line = list(color = 'red', 
+                                     line = list(color = '#f07167', 
                                                  width = 2), 
                                      yaxis = 'y2', 
-                                     name = 'Aggregate Score (%)') %>% 
-                                    layout(title = 'Top 10 Indie Games', 
+                                     name = 'Aggregate Score (%)',
+                                     hovertemplate = ~paste('<b>Game Name</b>:', name.x, 
+                                                            '<br><b>Average Positive Rating</b>:', percent(Agg_Score),
+                                                            '<br><b>Average Player Count</b>:', average_forever,
+                                                            '<br><b>Description</b>: ', 
+                                                            gsub('(.{1,45})(\\s|$)', '\\1\n', short_description))) %>% 
+                                    layout(title = paste("Top ", input$overview_indie_topn ," Played Indie Games on Steam"), 
                                            xaxis = list(title = 'Games', 
                                                         showticklabels = FALSE),
                                            yaxis = list(title = 'No. of Users'), 
                                            yaxis2 = list(title = 'Aggregate Score (%)', 
                                                          overlaying = 'y', 
                                                          side = 'right', 
-                                                         tickformat = '%'),
-                                           margin = list(l = 50, r = 50, b = 50, t = 50, pad = 4))   
+                                                         tickformat = '1%'),
+                                           margin = list(l = 50, r = 50, b = 50, t = 50, pad = 4),
+                                           legend = list(font = list(size = 10),
+                                                         orientation = "h",  
+                                                         xanchor = "center", 
+                                                         x = 0.75,
+                                                         y = -0.25))   
                                           
                   
                    

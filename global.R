@@ -9,9 +9,11 @@ pacman::p_load(
                htmlwidgets,
                bslib,
                DT,
+               RColorBrewer,
                
                # Tidyverse/Analytics
                tidyr,
+               scales,
                knitr,
                tidyverse, 
                readxl,

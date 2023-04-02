@@ -44,11 +44,15 @@
 }
 
 #overview_tabs{
-  background-color: #FFFFFF;
+  background-color: #FFFFFF ;
 }
 
-table{
-    table-layout:fixed;
-    width:100%;
+a#overview_tabs{
+  color: var(--primary_red) ;
+}
+
+th{
+  background: var(--primary_blue);
+  color: #FFFFFF;
 }
  
