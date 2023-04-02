@@ -194,7 +194,8 @@ overviewServer <- function(id, input, output, session){
                      head(input$overview_topgames_topn)
                    }
                    
-                 })
+                 }) %>% 
+                   bindCache(input$overview_topgames_sortby, input$overview_topgames_topn)
                    
                  
                  # Generate Top Games Bar Graph
@@ -312,7 +313,7 @@ overviewServer <- function(id, input, output, session){
                      arrange(desc(year)) %>% 
                      na.omit()
     
-                 })
+                 }) 
                  
                 top_publish_users <- reactive({
                   top_publish_table %>% mutate(year = year(as.Date(release_date))) %>%

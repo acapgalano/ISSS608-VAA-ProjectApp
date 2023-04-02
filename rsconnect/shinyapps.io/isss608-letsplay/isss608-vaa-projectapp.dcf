@@ -5,7 +5,9 @@ account: isss608-letsplay
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 8742403
-bundleId: 7038239
+bundleId: 7038900
 url: https://isss608-letsplay.shinyapps.io/isss608-vaa-projectapp/
-when: 1680423014.84023
-lastSyncTime: 1680423014.84024
+when: 1680443797.75189
+lastSyncTime: 1680443797.7519
+asMultiple: FALSE
+asStatic: FALSE
